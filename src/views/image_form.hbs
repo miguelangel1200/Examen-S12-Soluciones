@@ -1,23 +1,35 @@
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="card">
             <div class="card-body">
                 <form action="/images/add" method="POST"
                 enctype="multipart/form-data">
                     <div class="form-group">
-                        <input type="text" name="title"
-                        class="form-control" placeholder="Image Title">
+                        <input type="text" name="name"
+                        class="form-control" placeholder="Name">
                     </div>
                     <div class="form-group">
                         <textarea name="description" class="form-control"
-                        placeholder="Image Description"></textarea>
+                        placeholder="Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="proveedor"
+                        class="form-control" placeholder="Proveedor">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="sku"
+                        class="form-control" placeholder="SKU">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="price"
+                        class="form-control" placeholder="Price">
                     </div>
                     <div class="input-group mb-3">
                         <div class="custom-file">
                             <input type="file" name="image"
                             class="custom-file-input" id="inputGroupFile01">
                             <label for="inputGroupFile01"
-                            class="custom-file-label">Choose File</label>
+                            class="custom-file-label">Choose Photo</label>
                         </div>
                     </div>
                     <button class="btn btn-primary">
@@ -28,23 +40,30 @@
         </div>
     </div>
     
-    <div class="col-md-8">
-        <table class="table">
+    <div class="col-md-9">
+        <table class="table table-dark table-hover ">
             <thead>
                 <tr>
-                    <th>Title</th>
+                    <th>Name</th>
                     <th>Description</th>
+                    <th>Proveedor</th>
+                    <th>SKU</th>
+                    <th>Price</th>
                     <th>Operation</th>
                 </tr>
             </thead>
             <tbody>
                 {{#each photos}}
                 <tr>
-                    <td>{{title}}</td>
+                    <td>{{name}}</td>
                     <td>{{description}}</td>
+                    <td>{{proveedor}}</td>
+                    <td>{{sku}}</td>
+                    <td>{{price}}</td>
                     <td>
                         <a href="{{imageURL}}" target="_blank"
                         class="btn btn-primary">View</a>
+                        <a href="/images/update/{{_id}}" class="btn btn-warning">Update</a>
                         <a href="/images/delete/{{_id}}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>
